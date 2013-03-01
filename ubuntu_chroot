@@ -58,6 +58,9 @@ setup_mounts()
         $MKDIR $ROOT/data
     fi
 
+	[ -d $ROOT/media ] || $MKDIR $ROOT/media
+	[ -d $ROOT/media/sdcard ] || $MKDIR $ROOT/media/sdcard
+
     $MOUNT -o bind /dev $ROOT/dev
 
     $MOUNT -t devpts devpts $ROOT/dev/pts
@@ -80,6 +83,7 @@ setup_mounts()
     $MOUNT -o bind /system $ROOT/system
     $MOUNT -o bind /vendor $ROOT/vendor
     $MOUNT -o bind /data $ROOT/data
+    $MOUNT -o bind /sdcard $ROOT/media/sdcard
 }
 
 launch_uchroot()
